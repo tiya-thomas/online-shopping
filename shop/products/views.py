@@ -7,7 +7,7 @@ def product_list(request):
     if request.user.is_superuser:
         products= Product.objects.all()
     else:
-        products = Product.objects.filter(is_active=True)
+        products = Product.objects.all()
     return render(request, "product_list.html", {"products": products})
 
 
@@ -73,7 +73,7 @@ def product_detail(request, id):
     if request.user.is_superuser:
         product=get_object_or_404(Product,id=id)
     else:
-        product = get_object_or_404(Product, id=id, is_active=True)
+        product = get_object_or_404(Product, id=id)
     return render(request, "product_detail.html", {"product": product})
 
 
